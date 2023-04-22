@@ -77,6 +77,7 @@
           </div>
           <button class="login-submit" @click.prevent="login()">登录</button>
         </form>
+        <p>login with github</p>
         <button class="login-back" @click="$router.back()">返回</button>
       </div>
     </div>
@@ -269,6 +270,7 @@
         } else { // 成功
           // 6.1 同步用户数据
           this.syncUserInfo(this.userInfo);
+          console.log("this is userInfo",this.userInfo);
           // 6.2 回到主界面
           MessageBox({
             type: 'success',

@@ -126,19 +126,24 @@
         this.dialogVisible = true;
       },
       async submitForm(formName) {
+        console.log(formName);
         let flag = false;
         this.$refs[formName].validate((valid) => {
           if (valid) {
+            console.log("valid", valid);
             this.$refs[formName].model.goods_id = Number(this.$refs[formName].model.goods_id);
             this.$refs[formName].model.counts = Number(this.$refs[formName].model.counts);
             this.$refs[formName].model.price = Number(this.$refs[formName].model.price);
-            // console.log(this.$refs[formName].model);
+            console.log(this.$refs[formName].model);
             flag = true;
+            console.log("flag", flag);
+            // console.log("fileList", this.fileList);
           }
         });
-        if(!this.fileList.length){
-          flag = false;
-        }
+        // if(!this.fileList.length){
+        //   flag = false;
+        // }
+        console.log("flag", flag);
         if(flag){
           let formData = new FormData();
           formData.append('goods_id', this.$refs[formName].model.goods_id);
@@ -148,9 +153,10 @@
           formData.append('price', this.$refs[formName].model.price);
           formData.append('sales_tip', this.$refs[formName].model.sales_tip);
           formData.append('category', this.$refs[formName].model.category);
-          formData.append('goods_img', this.fileList[0].raw);
-
+          // formData.append('goods_img', this.fileList[0].raw);
+          console.log("formData", formData);
           let result = await addGoodsToRecom(formData);
+
           /*
               let result = await addGoodsToRecom({
                 goods_id: this.$refs[formName].model.goods_id,

@@ -49,7 +49,8 @@
 					<h3>{{ cate.cate_name }}</h3><div><a @click.prevent="getRList(cate.cate_id)">MORE</a></div>
 				</div>
 				<div class="pro_show">
-          <ProductItem v-for="(pro) in homeshoplist[cate.cate_id - 1]" :key="pro.goods_id" :pro="pro"/>
+				<!-- <div v-for="(pro) in homeshoplist[cate.cate_id - 1]">{{ pro }}</div> -->
+           <ProductItem v-for="(pro) in homeshoplist[cate.cate_id - 1]" :key="pro.goods_id" :pro="pro"/>
 				</div>
 			</div>
 		</div>

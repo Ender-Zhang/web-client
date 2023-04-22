@@ -120,6 +120,7 @@
         let result = await getAllgoods();
         if(result.success_code === 200){
           this.tableData = result.message;
+          console.log(this.tableData);
           this.tableData.forEach((data,index)=>{
             if(index >= (this.currentIndex-1) * this.pageSize && index < (this.currentIndex) * this.pageSize){
               this.tempData.push(data);

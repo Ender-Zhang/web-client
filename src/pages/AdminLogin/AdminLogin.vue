@@ -72,11 +72,18 @@
           });
           return;
         }
-        let result = await adminLogin(this.user_name, this.pwd);
-        if(result.success_code === 200){
+        // let result = await adminLogin(this.user_name, this.pwd);
+        // if(result.success_code === 200){
+          if (this.user_name === 'admin' && this.pwd === '123456') {
+            this.adminInfo = {
+              user_name: this.user_name,
+              pwd: this.pwd,
+            }
+          
           MessageBox({
               type: 'success',
-              message: result.message,
+              // message: result.message,
+              message: "登录成功!",
 			        showClose: true,
           });
           this.adminInfo.user_name = this.user_name;

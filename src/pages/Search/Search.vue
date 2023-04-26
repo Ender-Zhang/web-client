@@ -6,13 +6,13 @@
 					<h3 v-text="this.categoryList[this.currentCate-1].cate_name"></h3>
 					<el-dropdown @command="handleCommand">
 					  <span class="el-dropdown-link">
-						  更多类别<i class="el-icon-arrow-down el-icon--right"></i>
+						More categories<i class="el-icon-arrow-down el-icon--right"></i>
 					  </span>
 					  <el-dropdown-menu slot="dropdown">
 						  <el-dropdown-item v-for="(cate, index) in categoryList" :key="index" :command="index+1">{{ cate.cate_name }}</el-dropdown-item>
 					  </el-dropdown-menu>
 					</el-dropdown>
-					<router-link to="/home" class="goHome">返回首页</router-link>
+					<router-link to="/home" class="goHome">Back to top</router-link>
 				</div>
 				<div class="pro_show">
           			<ProductItem v-for="(goods) in recommendshoplist" :key="goods.goods_id" :pro="goods"/>

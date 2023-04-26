@@ -6,7 +6,7 @@
 				<el-col :span="4" :offset="1" class="cateList">
 					<div class="cate_img">
 						<i class="el-icon-office-building"></i>
-						商品分类
+						Product Categories
 					</div>
 					<el-menu
 					  class="el-menu-vertical-demo"
@@ -32,12 +32,12 @@
             <img :src="userInfo.user_avatar" v-if="userInfo.user_avatar"/>
 						<img src="./img/no_login.jpg" v-else/>
 					</div>
-					<p>Hi~ 欢迎来到医药商城</p>
-					<p v-if="!userInfo.id"><router-link to="/login">登录</router-link><router-link to="/login">注册</router-link></p>
+					<p>Hi~ Welcome to Medical Mall</p>
+					<p v-if="!userInfo.id"><router-link to="/login">Login</router-link><router-link to="/login">Registration</router-link></p>
 					<p v-else class="userIn">
-            <a v-if="userInfo.user_nickname">您好,{{ userInfo.user_nickname }}</a>
-            <a v-else>您好,{{ userInfo.user_name | nameFormat }}</a>
-            <router-link to="/me">个人中心</router-link>
+            <a v-if="userInfo.user_nickname">Hello,{{ userInfo.user_nickname }}</a>
+            <a v-else>Hello,{{ userInfo.user_name | nameFormat }}</a>
+            <router-link to="/me">Personal Center</router-link>
           </p>
 					
 				</el-col>
@@ -58,7 +58,7 @@
 
 		<!-- 尾部 -->
 		<div id="footer">
-			<img src="./img/footer.png" />
+			<!-- <img src="./img/footer.png" /> -->
 			<div class="footer_text"></div>
 		</div>
 
@@ -91,7 +91,7 @@
         }else{
           MessageBox({
             type: 'info',
-            message: "请先登录!",
+            message: "Please login first!",
 			      showClose: true,
           });
         }

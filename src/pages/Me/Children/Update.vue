@@ -1,9 +1,9 @@
 <template>
   <div class="user-detail">
-    <div class="user-detail-top">基本信息</div>
+    <div class="user-detail-top">Basic Information</div>
     <div class="user-detail-group">
       <div class="user-icon">
-        <span>头像</span>
+        <span>Avatar</span>
         <el-upload
           class="avatar-uploader"
           action=""
@@ -18,18 +18,18 @@
         </el-upload>
       </div>
       <div class="user-item">
-        <span>手机</span>
-        <span>{{ userInfo.user_phone || "暂未设置" }}</span>
+        <span>phone</span>
+        <span>{{ userInfo.user_phone || "Not yet set" }}</span>
       </div>
       <div class="user-item">
-        <span>账号</span>
-        <span>{{ userInfo.user_name || "暂未设置" }}</span>
+        <span>Account Number</span>
+        <span>{{ userInfo.user_name || "Not yet set" }}</span>
       </div>
       <div class="user-item">
-        <span>昵称</span>
+        <span>Nickname</span>
         <el-input
           type="text"
-          placeholder="请输入内容"
+          placeholder="Please enter content"
           v-model="user_nickname"
           maxlength="15"
           show-word-limit
@@ -39,8 +39,8 @@
         </el-input>
       </div>
       <div class="user-item">
-        <span>性别</span>
-        <el-select v-model="user_sex" placeholder="请选择">
+        <span>Gender</span>
+        <el-select v-model="user_sex" placeholder="Please select">
           <el-option
            v-for="item in options"
           :key="item.value"
@@ -50,10 +50,10 @@
         </el-select>
       </div>
       <div class="user-item">
-        <span>常住地</span>
+        <span>Place of permanent residence</span>
         <el-input
           type="text"
-          placeholder="请输入内容"
+          placeholder="Please enter content"
           v-model="user_address"
           maxlength="25"
           show-word-limit
@@ -63,19 +63,19 @@
         </el-input>
       </div>
       <div class="user-item">
-        <span>生日</span>
+        <span>Birthday</span>
         <el-date-picker
           v-model="user_birthday"
           type="date"
-          placeholder="选择日期"
+          placeholder="Select date"
           value-format="yyyy-MM-dd">
         </el-date-picker>
       </div>
       <div class="user-item">
-        <span>个性签名</span>
+        <span>Personalized Signature</span>
         <el-input
           type="text"
-          placeholder="请输入内容"
+          placeholder="Please enter content"
           v-model="user_sign"
           maxlength="15"
           show-word-limit
@@ -85,7 +85,7 @@
         </el-input>
       </div>
 
-      <el-button type="danger" @click="saveUserInfo()">编辑</el-button>
+      <el-button type="danger" @click="saveUserInfo()">Editor</el-button>
     </div>
   </div>
 </template>
@@ -108,11 +108,11 @@
         user_avatar: null,
 
         options: [{
-          value: '男',
-          label: '男'
+          value: 'Male',
+          label: 'Male'
         }, {
-          value: '女',
-          label: '女'
+          value: 'Female',
+          label: 'Female'
         }],
       }
     },
@@ -133,10 +133,10 @@
         const isLt2M = file.size / 1024 / 1024 < 1;
 
         if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 或 PNG 格式!');
+          this.$message.error('Upload avatar images in JPG or PNG format only!');
         }
         if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 1MB!');
+          this.$message.error('Upload avatar image size cannot exceed 1MB!');
         }
         return isJPG && isLt2M;
       },

@@ -14,63 +14,63 @@
 					</div>
 					<div class="pro_meg_price">
 						<dl>
-							<dt>促销价</dt>
+							<dt>Promotion Price</dt>
 							<dd>
 								<div class="promo_price">
 									<span class="tm-price">{{goodsDetail[0].price  | moneyFormat}}</span>
-									<b>优惠促销</b>
+									<b>Promotion</b>
 								</div>
 							</dd>
 						</dl>
             <dl>
-							<dt>市场价</dt>
+							<dt>Market Price</dt>
 							<dd class="nor_price">{{goodsDetail[0].normal_price /1000 | moneyFormat }}</dd>
 						</dl>
 						<dl>
-							<dt>本店优惠</dt>
-							<dd>包邮</dd>
+							<dt>Our Store Offer</dt>
+							<dd>Shipping included</dd>
 						</dl>
             <dl>
 							<dt class="sale_tip">{{goodsDetail[0].sales_tip}}</dt>
 						</dl>
             <dl>
-              <dt>服务承诺</dt>
+              <dt>Service Commitment</dt>
               <dd>
-                <span>正品保证</span>
-                <span>极速退货</span>
+                <span>Genuine product guarantee</span>
+                <span>Extremely fast returns</span>
               </dd>
             </dl>
 					</div>
 					<div class="pro_meg_deliver">
 						<dl>
-							<dt>运费</dt>
-							<dd>福建福州&nbsp;&nbsp;至&nbsp;&nbsp;福建福州&nbsp;&nbsp;&nbsp;快递:0.00</dd>
+							<dt>Shipping Fee</dt>
+							<dd>Pennsylvania&nbsp;&nbsp;To&nbsp;&nbsp;Pennsylvania&nbsp;&nbsp;&nbsp;Express delivery:0.00</dd>
 						</dl>
 					</div>
 					<div class="pro_meg_console">
-						<dl class="tb-sku">
-							<dt>数量</dt>
+						<!-- <dl class="tb-sku">
+							<dt>Quantity</dt>
 							<dd>
 								<div class="item-amout">
 									<el-input-number v-model="shopNum" :min="1" :max="goodsDetail[0].counts"></el-input-number>
 								</div>
-								<span>库存</span><em>{{goodsDetail[0].counts}}</em><span>件</span>
+								<span>Inventory</span><em>{{goodsDetail[0].counts}}</em><span>Pieces</span>
 							</dd>
-						</dl>
-						<div class="shopping_car">
+						</dl> -->
+						<!-- <div class="shopping_car">
 							<el-button type="danger" @click.prevent="dealWithCellBtnClick(goodsDetail[0])">加入购物车</el-button>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
       <div class="pro_comment">
-        <h3>商品评价</h3>
+        <h3>Product Reviews</h3>
         <div v-if="goodsDetail[0].comments_count">
           <div class="media" v-for="(comment, index) in goodsComment" :key="index">
             <div class="media-body">
-              <h6 class="media-heading" v-if="comment.user_nickname">用户:&nbsp;{{ comment.user_nickname }}</h6>
-              <h6 class="media-heading" v-else>用户:&nbsp;{{ comment.user_name | nameFormat }}</h6>
-              <span>评论:</span>&nbsp;{{comment.comment_detail}}
+              <h6 class="media-heading" v-if="comment.user_nickname">User:&nbsp;{{ comment.user_nickname }}</h6>
+              <h6 class="media-heading" v-else>User:&nbsp;{{ comment.user_name | nameFormat }}</h6>
+              <span>Comments:</span>&nbsp;{{comment.comment_detail}}
               <el-rate
                 v-model="comment.comment_rating"
                 disabled
@@ -82,13 +82,13 @@
         </div>
         <div class="media" v-else>
           <div class="media-body">
-            本商品暂无评论
+            No comments for this product
           </div>
         </div>
       </div>
       <div class="pro_judge" v-if="userInfo.user_name">
-        <h3>评价该商品</h3>
-        <span>为该商品评分</span>
+        <h3>Rate this item</h3>
+        <span>Rate this product</span>
         <el-rate
           v-model="rating"
           :colors="colors"
@@ -101,11 +101,11 @@
           placeholder="请输入内容"
           v-model="textarea">
         </el-input>
-        <el-button type="primary" @click="post()">发布<i class="el-icon-edit el-icon--right"></i></el-button>
+        <el-button type="primary" @click="post()">Release<i class="el-icon-edit el-icon--right"></i></el-button>
       </div>
       <div class="pro_judge" v-else>
-        <h3>评价该商品</h3>
-        <span class="judge_erro_tip">登录后才可发表评论</span>
+        <h3>Rate this item</h3>
+        <span class="judge_erro_tip">Login to post comments</span>
       </div>
 	</div>
 </template>
@@ -156,7 +156,7 @@
         if(!this.textarea){
            MessageBox({
               type: 'info',
-              message: "评论不得为空",
+              message: "Comments must not be empty",
 			        showClose: true,
            });
            return;
@@ -165,7 +165,7 @@
         if(result.success_code === 200){
           MessageBox({
               type: 'success',
-              message: "发布成功",
+              message: "Publish successfully",
 			        showClose: true,
           });
           this.textarea = '';
@@ -175,7 +175,7 @@
         }else{
           MessageBox({
               type: 'info',
-              message: "发布失败",
+              message: "Posting Failure",
 			        showClose: true,
           });
         }

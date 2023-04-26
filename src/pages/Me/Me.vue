@@ -1,13 +1,13 @@
 <template>
   <div id="me">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <router-link class="navbar-brand col-sm-3 col-md-2 mr-0" to="/home">医药商城</router-link>
+      <router-link class="navbar-brand col-sm-3 col-md-2 mr-0" to="/home">Medical Mall</router-link>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" @click.prevent="goBack">返回商城</a>
+          <a class="nav-link" @click.prevent="goBack">Back to the mall</a>
         </li>
         <li class="nav-item text-nowrap">
-          <a class="nav-link" @click="logout">退出登录</a>
+          <a class="nav-link" @click="logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -25,30 +25,30 @@
               class="el-menu-vertical-demo">
               <el-menu-item index="1"  @click="goTo('/me/profile')">
                 <i class="el-icon-document-copy"></i>
-                <span slot="title">我的资料</span>
+                <span slot="title">My Profile</span>
               </el-menu-item>
               <el-submenu index="2">
                 <template slot="title">
                   <i class="el-icon-edit"></i>
-                  <span>编辑信息</span>
+                  <span>Editorial Information</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="2-1" @click="goTo('/me/update')">修改基本信息</el-menu-item>
-                  <el-menu-item index="2-2" @click="goTo('/me/editphone')">修改手机号</el-menu-item>
-                  <el-menu-item index="2-3" @click="goTo('/me/editpwd')">修改密码</el-menu-item>
+                  <el-menu-item index="2-1" @click="goTo('/me/update')">Modify basic information</el-menu-item>
+                  <!-- <el-menu-item index="2-2" @click="goTo('/me/editphone')">Change cell phone number</el-menu-item>
+                  <el-menu-item index="2-3" @click="goTo('/me/editpwd')">Change password</el-menu-item> -->
                 </el-menu-item-group>
               </el-submenu>
-              <el-submenu index="3">
-                <template slot="title">
+              <!-- <el-submenu index="3"> -->
+                <!-- <template slot="title">
                   <i class="el-icon-collection-tag"></i>
-                  <span>我的订单</span>
-                </template>
-                <el-menu-item-group>
+                  <span>My Orders</span>
+                </template> -->
+                <!-- <el-menu-item-group>
                   <el-menu-item index="3-1" @click="goTo('/me/sales')">待付款</el-menu-item>
                   <el-menu-item index="3-2" @click="goTo('/me/sales')">待发货</el-menu-item>
                   <el-menu-item index="3-3" @click="goTo('/me/sales')">待收货</el-menu-item>
-                </el-menu-item-group>
-              </el-submenu>
+                </el-menu-item-group> -->
+              <!-- </el-submenu> -->
             </el-menu>
           </div>
         </nav>
@@ -71,14 +71,14 @@
     methods:{
       ...mapActions(["logOut"]),
       logout(){
-        this.$confirm('您确定退出登录吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('Are you sure you want to log out?', 'Tips', {
+          confirmButtonText: 'Determine',
+          cancelButtonText: 'Cancellation',
           type: 'warning'
         }).then(() => {
           this.$message({
             type: 'success',
-            message: '退出成功!'
+            message: 'Successful exit!'
           });
           let result = this.logOut({});
           this.$router.replace('/home');
@@ -86,7 +86,7 @@
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消退出'
+            message: 'Canceled withdrawal'
           });
         });
       },

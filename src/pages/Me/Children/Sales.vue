@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="sales">
     待完善
   </div>
@@ -15,4 +15,4 @@
 
 <style scoped>
 
-</style>
+</style> -->

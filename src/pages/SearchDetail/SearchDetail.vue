@@ -4,13 +4,13 @@
     <div id="container">
       <div class="product">
         <div class="pro_line">
-          <router-link to="/home" class="goHome">返回首页</router-link>
+          <router-link to="/home" class="goHome">Back to top</router-link>
         </div>
         <div class="pro_show" v-if="searchresults.length">
           <ProductItem v-for="(goods) in searchresults" :key="goods.goods_id" :pro="goods"/>
         </div>
         <div v-else>
-          找不到您想要的商品
+			Can't find the product you want
         </div>
       </div>
     </div>

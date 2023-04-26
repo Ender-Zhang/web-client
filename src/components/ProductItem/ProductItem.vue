@@ -4,10 +4,10 @@
 		<div class="pro_text">
 			<p><em>{{ pro.price  | moneyFormat }}</em></p>
 			<p>{{ pro.short_name }}</p>
-			<p>医药商城自营店</p>
+			<p>Medicine Mall Self-supporting Store</p>
 		</div>
 		<div class="add_btn">
-			<a @click="goDetail(pro.goods_id)"><el-button type="danger">查看详情</el-button></a>
+			<a @click="goDetail(pro.goods_id)"><el-button type="danger">View Details</el-button></a>
 		</div>
 	</div>
 </template>

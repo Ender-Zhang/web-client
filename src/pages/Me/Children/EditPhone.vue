@@ -1,28 +1,28 @@
 <template>
   <div id="edit-phone">
     <section class="edit-message">
-      <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
+      <input type="tel" maxlength="11" placeholder="phone number" v-model="phone">
       <button
         v-if="!countDown"
         class="get-verification"
         :class="{phone_right: phoneRight}"
         @click.prevent="getVerifyCode()"
       >
-        获取验证码
+      Get verification code
       </button>
       <button
         v-else
         disabled="disabled"
         class="get-verification">
-          已发送({{countDown}}s)
+        Sent({{countDown}}s)
       </button>
     </section>
     <section class="edit-verification">
-      <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
+      <input type="tel" maxlength="8" placeholder="Verification Code" v-model="code">
     </section>
     <div class="btn-section">
-       <el-button type="primary" @click="goTo('/me/profile')">返回</el-button>
-       <el-button type="danger" @click="submitEdit">编辑</el-button>
+       <el-button type="primary" @click="goTo('/me/profile')">Back</el-button>
+       <el-button type="danger" @click="submitEdit">Editor</el-button>
     </div>
   </div>
 </template>
@@ -92,11 +92,11 @@
       },
       async submitEdit(){
         if(!this.phone){
-          this.$message('手机号不得为空！');
+          this.$message('Cell phone number must not be empty!');
           return;
         }
         if(!this.code){
-          this.$message('验证码不得为空！');
+          this.$message('Captcha must not be empty!');
           return;
         }
         let result = await changeUserPhone(this.userInfo.id, this.phone, this.code);

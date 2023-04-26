@@ -1,6 +1,6 @@
 <template>
   <div class="pro_item">
-    <h4 class="item_title"><span>医药商城自营店</span><span class="item_one">{{goods.price / 100 | moneyFormat}}</span></h4>
+    <h4 class="item_title"><span>Medicine Mall Self-supporting Store</span><span class="item_one">{{goods.price / 100 | moneyFormat}}</span></h4>
     <div class="item_content">
       <div class="pro_Chk">
         <input type="checkbox" class="pro_ChkElem" :checked="goods.checked" @click="singleSelected(goods)">
@@ -36,15 +36,15 @@
         let user_id = this.userInfo.id;
         if(count === 0){
           // 是否删除
-          this.$confirm('是否删除该商品?', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
+          this.$confirm('Whether to delete the product?', 'Tips', {
+            confirmButtonText: 'Determine',
+            cancelButtonText: 'Cancellation',
             type: 'warning'
           }).then(() => {
             this.$store.dispatch('delSingleGoods', {goods, user_id});
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: 'Deleted successfully!'
             });
           }).catch(() => {
             this.$store.dispatch('updateGoodsCount', {goods, count: 1, user_id});

@@ -1,3 +1,11 @@
+<!--
+ * @Author: Ender-Zhang YUZ302@pitt.edu
+ * @Date: 2023-04-23 14:46:21
+ * @LastEditors: Ender-Zhang YUZ302@pitt.edu
+ * @LastEditTime: 2023-04-23 17:22:19
+ * @FilePath: \web-client\src\pages\Login\Login.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="login-container">
     <!--登录面板内容部分-->
@@ -9,8 +17,8 @@
         </div>
         <!--面板标题-->
         <div class="login-header-title">
-          <a href="javascript:;" :class="{current: loginMode}" @click="dealLoginMode(true)">验证码登录</a>
-          <a href="javascript:;" :class="{current: !loginMode}" @click="dealLoginMode(false)">密码登录</a>
+          <a href="javascript:;" :class="{current: loginMode}" @click="dealLoginMode(true)">Captcha Login</a>
+          <a href="javascript:;" :class="{current: !loginMode}" @click="dealLoginMode(false)">Password Login</a>
         </div>
       </div>
       <!--面板表单部分-->
@@ -19,28 +27,28 @@
           <!--手机验证码登录部分-->
           <div :class="{current: loginMode}">
             <section class="login-message">
-              <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
+              <input type="tel" maxlength="11" placeholder="Phone Number" v-model="phone">
               <button
                 v-if="!countDown"
                 class="get-verification"
                 :class="{phone_right: phoneRight}"
                 @click.prevent="getVerifyCode()"
               >
-                获取验证码
+              Get verification code
               </button>
               <button
                 v-else
                 disabled="disabled"
                 class="get-verification">
-                已发送({{countDown}}s)
+                Sent({{countDown}}s)
               </button>
             </section>
             <section class="login-verification">
-              <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
+              <input type="tel" maxlength="8" placeholder="Verification Code" v-model="code">
             </section>
             <section class="login-hint">
-              温馨提示：未注册帐号的手机号，登录时将自动注册，且代表已同意
-              <a href="javascript:;">服务协议与隐私政策</a>
+              Warm tips: cell phone number without registered account, login will be automatically registered, and the representative has agreed
+              <a href="javascript:;">Service Agreement and Privacy Policy</a>
             </section>
           </div>
           <!--账号登录部分-->
@@ -50,8 +58,8 @@
                 <input type="text" maxlength="11" placeholder="账号" v-model="user_name">
               </section>
               <section class="login-verification">
-                <input type="password" maxlength="18" placeholder="密码" v-if="pwdMode" v-model="pwd">
-                <input type="text" maxlength="18" placeholder="密码" v-else v-model="pwd">
+                <input type="password" maxlength="18" placeholder="Password" v-if="pwdMode" v-model="pwd">
+                <input type="text" maxlength="18" placeholder="Password" v-else v-model="pwd">
                 <div class="switch-show">
                   <img @click.prevent="dealPwdMode(false)" :class="{on: pwdMode}" src="./images/hide_pwd.png" alt=""
                        width="20">
@@ -60,25 +68,25 @@
                 </div>
               </section>
               <section class="login-message">
-                <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
+                <input type="text" maxlength="11" placeholder="Verification Code" v-model="captcha">
                 <img
                   ref="captcha"
                   class="get-verification"
-                  src="http://localhost:3000/api/captcha"
+                  src="https://team-rolls-royce-backend.glitch.me/api/captcha"
                   alt="captcha"
                   @click.prevent="getCaptcha()"
                 >
               </section>
               <section class="login-hint">
-                温馨提示：未注册帐号的用户账号，登录时将自动注册，且代表已同意
-                <a href="javascript:;">服务协议与隐私政策</a>
+                Warm note: User accounts that have not registered accounts will be automatically registered when logging in, and the representative has agreed to
+                <a href="javascript:;">Service Agreement and Privacy Policy</a>
               </section>
             </section>
           </div>
-          <button class="login-submit" @click.prevent="login()">登录</button>
+          <button class="login-submit" @click.prevent="login()">Login</button>
         </form>
         <p>login with github</p>
-        <button class="login-back" @click="$router.back()">返回</button>
+        <button class="login-back" @click="$router.back()">Back</button>
       </div>
     </div>
   </div>
@@ -151,7 +159,7 @@
         }else if(result.success_code === 200){
 			    MessageBox({
               type: 'info',
-              message: `验证码为:${result.message}, 短信功能暂未开通,十分抱歉对您产生的不便`,
+              message: `The verification code is:${result.message} `,
 			        showClose: true,
           });
 		    }
@@ -162,7 +170,7 @@
       },
       // 4. 获取图形验证码
       getCaptcha() {
-        this.$refs.captcha.src = 'http://localhost:3000/api/captcha?time=' + new Date();
+        this.$refs.captcha.src = 'https://team-rolls-royce-backend.glitch.me/api/captcha?time=' + new Date();
       },
       // 5. 登录
       async login() {
@@ -172,14 +180,14 @@
           if (!this.phone) {
 		        MessageBox({
               type: 'info',
-              message: "请输入手机号码!",
+              message: "Please enter your cell phone number!",
 			        showClose: true,
             });
             return;
           } else if (!this.phoneRight) {
 		        MessageBox({
               type: 'info',
-              message: "请输入正确手机号码!",
+              message: "Please enter the correct cell phone number!",
 			        showClose: true,
             });
             return;
@@ -188,14 +196,14 @@
           if (!this.code) {
 		      	MessageBox({
               type: 'info',
-              message: "请输入验证码!",
+              message: "Please enter the verification code!",
 			        showClose: true,
             });
             return;
           } else if (!(/^\d{6}$/gi.test(this.code))) {
 		         MessageBox({
               type: 'info',
-              message: "请输入正确的验证码!",
+              message: "Please enter the correct verification code!",
 			        showClose: true,
             });
             return;
@@ -213,7 +221,7 @@
             this.captcha = '';  // 图形验证码
           } else {
             this.userInfo = {
-              message: '登录失败, 手机号或验证码不正确!'
+              message: 'Login failed, phone number or verification code is incorrect!'
             };
           }
         } else { // 账号和密码登录
@@ -221,21 +229,21 @@
           if (!this.user_name) {
 		        MessageBox({
               type: 'info',
-              message: "请输入账号!",
+              message: "Please enter your account number!",
 			        showClose: true,
             });
             return;
           } else if (!this.pwd) {
 		        MessageBox({
               type: 'info',
-              message: "请输入密码!",
+              message: "Please enter your password!",
 			        showClose: true,
             });
             return;
           }else if (!this.captcha) {
 		        MessageBox({
               type: 'info',
-              message: "请输入验证码!",
+              message: "Please enter the verification code!",
 			        showClose: true,
             });
             return;
@@ -254,7 +262,7 @@
           } else {
             MessageBox({
               type: 'info',
-              message: '登录失败, 账号或密码或验证码不正确!',
+              message: 'Login failed, account or password or verification code is incorrect!',
 			        showClose: true,
             });
           }
@@ -274,7 +282,7 @@
           // 6.2 回到主界面
           MessageBox({
             type: 'success',
-            message: '登录成功!',
+            message: 'Login successful!',
 			      showClose: true,
           });
           this.$router.back();

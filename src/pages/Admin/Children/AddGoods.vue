@@ -1,14 +1,14 @@
 <template>
   <div id="addgoods">
-    <h3>商品上架</h3>
+    <h3>Product Listing</h3>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="商品ID" prop="goods_id" style="width:250px">
+      <el-form-item label="Product ID" prop="goods_id" style="width:250px">
         <el-input v-model="ruleForm.goods_id" type="number"></el-input>
       </el-form-item>
-      <el-form-item label="商品名称" prop="short_name" style="width:500px">
+      <el-form-item label="Product Name" prop="short_name" style="width:500px">
         <el-input v-model="ruleForm.short_name"></el-input>
       </el-form-item>
-	  <el-form-item label="商品图片" style="width:500px">
+	  <el-form-item label="Product Images" style="width:500px">
         <el-upload
 		  list-type="picture-card"
 		  :on-preview="handlePictureCardPreview"
@@ -16,7 +16,7 @@
 		  :auto-upload="false"
 		  :multiple="false"
 		  limit:1
-		  action="http://localhost:3000"
+		  action="https://team-rolls-royce-backend.glitch.me"
 		>
 		  <i class="el-icon-plus"></i>
 		</el-upload>
@@ -24,14 +24,14 @@
 		  <img width="100%" :src="dialogImageUrl" alt="">
 		</el-dialog>
       </el-form-item>
-      <el-form-item label="商品特价" prop="price" style="width:250px">
+      <el-form-item label="Product Specials" prop="price" style="width:250px">
         <el-input v-model="ruleForm.price" type="number"></el-input>
       </el-form-item>
-      <el-form-item label="商品库存" prop="counts" style="width:250px">
+      <el-form-item label="Merchandise Inventory" prop="counts" style="width:250px">
         <el-input v-model="ruleForm.counts" type="number"></el-input>
       </el-form-item>
-      <el-form-item label="商品分类" prop="category">
-        <el-select v-model="ruleForm.category" placeholder="请选择">
+      <el-form-item label="Product Categories" prop="category">
+        <el-select v-model="ruleForm.category" placeholder="Please select">
           <el-option
            v-for="item in options"
           :key="item.value"
@@ -40,15 +40,15 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="商品标签" prop="sales_tip" style="width:500px">
+      <el-form-item label="Product Tags" prop="sales_tip" style="width:500px">
         <el-input v-model="ruleForm.sales_tip"></el-input>
       </el-form-item>
-      <el-form-item label="商品详情" prop="goods_name" style="width:500px">
+      <el-form-item label="Product Details" prop="goods_name" style="width:500px">
         <el-input type="textarea" v-model="ruleForm.goods_name" autosize></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">Create Now</el-button>
+        <el-button @click="resetForm('ruleForm')">Reset</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -75,42 +75,42 @@
         },
         rules: {
           goods_id: [
-            { required: true, message: '请输入商品ID', trigger: 'blur' }
+            { required: true, message: 'Please enter the product ID', trigger: 'blur' }
           ],
           short_name: [
-            { required: true, message: '请输入商品名称', trigger: 'blur' }
+            { required: true, message: 'Please enter the product name', trigger: 'blur' }
           ],
           goods_name: [
-            { required: true, message: '请填写商品详情', trigger: 'blur' }
+            { required: true, message: 'Please fill in the product details', trigger: 'blur' }
           ],
           price: [
-            { required: true, message: '请输入商品特价', trigger: 'blur' }
+            { required: true, message: 'Please enter the product special price', trigger: 'blur' }
           ],
           counts: [
-            { required: true, message: '请输入商品库存', trigger: 'blur' }
+            { required: true, message: 'Please enter product inventory', trigger: 'blur' }
           ],
           category: [
-            { required: true, message: '请选择商品分类号', trigger: 'blur' }
+            { required: true, message: 'Please select a product category number', trigger: 'blur' }
           ],
           sales_tip: [
-            { required: true, message: '请输入商品标签', trigger: 'blur' }
+            { required: true, message: 'Please enter the product label', trigger: 'blur' }
           ],
         },
         options: [{
           value: 1,
-          label: '美容美白'
+          label: 'Beauty Whitening'
         }, {
           value: 2,
-          label: '养生保健'
+          label: 'Health Care'
         },{
           value: 3,
-          label: '医学书籍'
+          label: 'Medical Books'
         },{
           value: 4,
-          label: '医疗器械'
+          label: 'Medical Devices'
         },{
           value: 5,
-          label: '视力保护'
+          label: 'Vision Protection'
         }],
       };
     },
@@ -171,19 +171,19 @@
           if(result.success_code === 200){
             this.$message({
               type: 'success',
-              message: '添加成功'
+              message: 'Added successfully'
             });
             this.$router.replace('/admin');
             getAllgoods();
           }else if(result.success_code === 500){
             this.$message({
               type: 'info',
-              message: '商品已存在'
+              message: 'Product already exists'
             });
           }else{
             this.$message({
               type: 'error',
-              message: '添加失败'
+              message: 'Failed to add'
             });
           }
         }

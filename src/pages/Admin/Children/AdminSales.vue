@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="admin-sales">
     待完善
   </div>
@@ -12,4 +12,4 @@
 
 <style scoped>
 
-</style>
+</style> -->

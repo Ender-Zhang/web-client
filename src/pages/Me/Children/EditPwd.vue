@@ -1,12 +1,12 @@
 <template>
   <div id="edit-pwd">
-    <el-input placeholder="请输入原密码" v-model="oriPwd" show-password clearable></el-input>
-    <el-input placeholder="请输入新密码" v-model="newPwd" show-password clearable></el-input>
-    <el-input placeholder="请再次输入新密码" v-model="newPwd2" show-password clearable></el-input>
-    <p>若没有设置初始密码，则不必输入原密码</p>
+    <el-input placeholder="Please enter the original password" v-model="oriPwd" show-password clearable></el-input>
+    <el-input placeholder="Please enter a new password" v-model="newPwd" show-password clearable></el-input>
+    <el-input placeholder="Please enter a new password again" v-model="newPwd2" show-password clearable></el-input>
+    <p>If no initial password is set, you do not need to enter the original password</p>
     <div class="btn-section">
-       <el-button type="primary" @click="goTo('/me/profile')">返回</el-button>
-       <el-button type="danger" @click="submitEdit">编辑</el-button>
+       <el-button type="primary" @click="goTo('/me/profile')">Back</el-button>
+       <el-button type="danger" @click="submitEdit">Editor</el-button>
     </div>
   </div>
 </template>
@@ -32,11 +32,11 @@
       },
       async submitEdit(){
         if(!this.newPwd || !this.newPwd2){
-          this.$message('输入框内容不得为空！');
+          this.$message('The content of the input box must not be empty!');
           return;
         }
         if(this.newPwd != this.newPwd2){
-          this.$message('两次输入的新密码不一致！');
+          this.$message('The new password entered twice does not match!');
           return;
         }
 

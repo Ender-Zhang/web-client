@@ -14,11 +14,11 @@
         <form>
           <div class="current">
             <section class="login-message">
-              <input type="text" maxlength="11" placeholder="用户名" v-model="user_name">
+              <input type="text" maxlength="11" placeholder="User Name" v-model="user_name">
             </section>
             <section class="login-verification">
-              <input type="password" maxlength="18" placeholder="密码" v-if="pwdMode" v-model="pwd">
-              <input type="text" maxlength="18" placeholder="密码" v-else v-model="pwd">
+              <input type="password" maxlength="18" placeholder="Password" v-if="pwdMode" v-model="pwd">
+              <input type="text" maxlength="18" placeholder="Password" v-else v-model="pwd">
               <div class="switch-show">
                 <img @click.prevent="dealPwdMode(false)" :class="{on: pwdMode}" src="./images/hide_pwd.png" alt=""
                        width="20">
@@ -27,9 +27,9 @@
               </div>
             </section>
           </div>
-          <button class="login-submit" @click.prevent="login()">登录</button>
+          <button class="login-submit" @click.prevent="login()">Login</button>
         </form>
-        <button class="login-back" @click="$router.back()">返回</button>
+        <button class="login-back" @click="$router.back()">Back</button>
       </div>
     </div>
   </div>
@@ -60,14 +60,14 @@
         if (!this.user_name) {
 		      MessageBox({
             type: 'info',
-            message: "请输入用户名",
+            message: "Please enter your username",
 			      showClose: true,
           });
           return;
         } else if (!this.pwd) {
 	        MessageBox({
             type: 'info',
-            message: "请输入密码!",
+            message: "Please enter your password!",
 		        showClose: true,
           });
           return;
@@ -83,7 +83,7 @@
           MessageBox({
               type: 'success',
               // message: result.message,
-              message: "登录成功!",
+              message: "Login successful!",
 			        showClose: true,
           });
           this.adminInfo.user_name = this.user_name;

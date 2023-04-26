@@ -3,20 +3,20 @@
     <div class="header_img"><img src="../../common/img/logo-round.jpg" /></div>
 		<div class="header_search">
 				<div>
-					<input type="text" placeholder="搜索  商品名称" v-model="keywords"/>
+					<input type="text" placeholder="Search by product name" v-model="keywords"/>
           <el-button type="danger" icon="el-icon-search" @click="postSearch"></el-button>
 				</div>
 				<p>
-					<a>牙齿美白</a>
-					<a>呵护女性</a>
-					<a>健康调理</a>
-					<a>保护视力</a>
-					<a>养生保健</a>
+					<a>Tooth Whitening</a>
+					<a>Care for Women</a>
+					<a>Health Conditioning</a>
+					<a>Protect your eyesight</a>
+					<a>Health Care</a>
 				</p>
 		</div>
-		<div class="shopping_bag">
-			<a @click.prevent="goShopCar"><i class="el-icon-shopping-cart-2"></i>&nbsp;&nbsp;我的购物车</a>
-		</div>
+		<!-- <div class="shopping_bag">
+			<a @click.prevent="goShopCar"><i class="el-icon-shopping-cart-2"></i>&nbsp;&nbsp;My Cart</a>
+		</div> -->
 	</div>
 </template>
 
@@ -41,7 +41,7 @@
         }else{
           MessageBox({
             type: 'info',
-            message: "请先登录!",
+            message: "Please login first!",
 			      showClose: true,
           });
         }

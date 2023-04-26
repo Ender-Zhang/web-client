@@ -1,23 +1,23 @@
-<template>
+<!-- <template>
   <div id="shopcar">
     <div id="content">
 			<div class="header">
 				<img src="./../../common/img/logo-round.png" class="header_logo" />
-				<span>购物车</span>
+				<span>Shopping Cart</span>
 			</div>
 			<div class="cont_title">
-				<span>全部商品</span>
+				<span>All Products</span>
 			</div>
 			<div class="cont_op">
 				<div class="con_selet">
 					<input type="checkbox" class="con_selectAll" :checked="isSelectedAll" @click.stop="selectedAll(isSelectedAll)"/>
-					<label for="con_selectAll">全选</label>
+					<label for="con_selectAll">Select All</label>
 				</div>
-				<div>商品信息</div>
-				<div>单价</div>
-				<div>数量</div>
-				<div>金额</div>
-				<div>操作</div>
+				<div>Product Information</div>
+				<div>Unit price</div>
+				<div>Quantity</div>
+				<div>Amount</div>
+				<div>Operation</div>
 			</div>
 			<div class="pro_box" v-if="cartgoods.length">
 				<div class="goods" v-for="(goods, index) in cartgoods" :key="index">
@@ -40,7 +40,7 @@
 							</div>
 						</li>
 						<li class="td td-sum"><strong>{{goods.buy_count * goods.price /100 | moneyFormat}}</strong></li>
-						<li class="td td-op"><a @click="clickTrash(goods)">删除</a></li>
+						<li class="td td-op"><a @click="clickTrash(goods)">Delete</a></li>
 					</ul>
 				</div>
 			</div>
@@ -400,4 +400,4 @@
 	background: #f22d00;
 	cursor: pointer;
 }
-</style>
+</style> -->

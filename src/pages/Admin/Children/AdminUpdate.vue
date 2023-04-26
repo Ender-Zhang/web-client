@@ -1,9 +1,17 @@
+<!--
+ * @Author: Ender-Zhang YUZ302@pitt.edu
+ * @Date: 2023-04-23 14:46:21
+ * @LastEditors: Ender-Zhang YUZ302@pitt.edu
+ * @LastEditTime: 2023-04-23 16:45:37
+ * @FilePath: \web-client\src\pages\Admin\Children\AdminUpdate.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <div class="goods-detail">
-    <div class="goods-detail-top">商品信息</div>
+    <div class="goods-detail-top">Product Information</div>
     <div class="goods-detail-group">
       <div class="goods-icon">
-        <span>图片</span>
+        <span>Pictures</span>
         <img :src="goodsInfo.thumb_url" alt="">
       </div>
       <div class="goods-item">
@@ -11,10 +19,10 @@
         <span>{{ goodsInfo.goods_id }}</span>
       </div>
       <div class="goods-item">
-        <span>名称</span>
+        <span>title</span>
         <el-input
           type="text"
-          placeholder="请输入内容"
+          placeholder="Please enter content"
           v-model="goodsInfo.short_name"
           clearable
           style="width:350px"
@@ -22,8 +30,8 @@
         </el-input>
       </div>
       <div class="goods-item">
-        <span>分类</span>
-        <el-select v-model="goodsInfo.category" placeholder="请选择">
+        <span>Classification</span>
+        <el-select v-model="goodsInfo.category" placeholder="Please select">
           <el-option
            v-for="item in options"
           :key="item.value"
@@ -33,10 +41,10 @@
         </el-select>
       </div>
       <div class="goods-item">
-        <span>价格</span>
+        <span>Price</span>
         <el-input
           type="number"
-          placeholder="请输入价格"
+          placeholder="Please enter the price"
           v-model="goodsInfo.price"
           clearable
           style="width:100px"
@@ -44,10 +52,10 @@
         </el-input>
       </div>
       <div class="goods-item">
-        <span>库存</span>
+        <span>Inventory</span>
         <el-input
           type="number"
-          placeholder="请输入库存"
+          placeholder="Please enter inventory"
           v-model="goodsInfo.counts"
           clearable
           style="width:100px"
@@ -55,17 +63,17 @@
         </el-input>
       </div>
       <div class="goods-item">
-        <span>描述</span>
+        <span>Description</span>
         <el-input
           type="text"
-          placeholder="请输入内容"
+          placeholder="Please enter content"
           v-model="goodsInfo.goods_name"
           clearable
           style="width:450px"
         >
         </el-input>
       </div>
-      <button @click="saveGoodsInfo()">编辑商品信息</button>
+      <button @click="saveGoodsInfo()">Edit product information</button>
     </div>
   </div>
 </template>
@@ -80,19 +88,19 @@
         goodsInfo: {},
         options: [{
           value: 1,
-          label: '美容美白'
+          label: 'Beauty Whitening'
         }, {
           value: 2,
-          label: '养生保健'
+          label: 'Health Care'
         },{
           value: 3,
-          label: '医学书籍'
+          label: 'Medical Books'
         },{
           value: 4,
-          label: '医疗器械'
+          label: 'Medical Devices'
         },{
           value: 5,
-          label: '视力保护'
+          label: 'Vision Protection'
         }],
       }
     },
@@ -108,7 +116,7 @@
         if(result.success_code === 200){
           this.$message({
               type: 'success',
-              message: '修改成功'
+              message: 'Modified successfully'
             });
           this.$router.replace('/admin');
           getAllgoods();

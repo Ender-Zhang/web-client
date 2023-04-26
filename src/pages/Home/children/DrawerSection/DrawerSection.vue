@@ -1,10 +1,10 @@
 <template>
     <!--首页右侧微型购物车区域-->
-		<div id="meg">
+		<!-- <div id="meg">
 			<div class="meg_nav" @click="drawer = true">
 				<div class="meg_shoppingbag">
 					<img src="../../img/meg_showcar.png" />
-					<p>购物车</p>
+					<p>Shopping Cart</p>
 					<div><span>{{userInfo.id ? cartgoods.length : 0}}</span></div>
 				</div>
 				<a class="meg_top" @click.stop="scrollToTop">
@@ -12,35 +12,35 @@
 				</a>
 			</div>
       <el-drawer
-	  	  title="购物车"
+	  	  title="Shopping Cart"
         :visible.sync="drawer"
         :direction="direction"
       >
         <div class="meg_show">
           <div class="toolbar_header">
-            <!-- <div class="pro_Chk">
+             <div class="pro_Chk">
               <input id="pro_ChkAll" type="checkbox" :checked="isSelectedAll" @click.stop="computeShopCar">
               <label for="pro_ChkAll">全选</label>
             </div> -->
-            <a @click.prevent="goToShop">全屏查看</a>
+            <!-- <a @click.prevent="goToShop">Full Screen View</a>
           </div>
           <div class="meg_content" v-if="userInfo.id">
             <DrawerItem v-for="(goods) in cartgoods" :key="goods.goods_id" :goods="goods" @computeShopCar="computeShopCar"/>
           </div>
-          <div class="meg_noLogin" v-else>请先登录~</div>
+          <div class="meg_noLogin" v-else>Please login first~</div>
           <div class="toolbar_footer">
             <div class="pro_total">
               <h3>
-                <span>已选</span>
+                <span>Selected</span>
                 <strong class="total_count">{{totalAmount}}</strong>
-                <span>件</span>
+                <span>Pieces</span>
               </h3>
               <span>
                 <strong class="total_price">{{totalPrice / 100 | moneyFormat}}</strong>
               </span>
             </div>
             <div class="pro_cashier">
-              <el-button type="danger" :disabled="!totalAmount">结算</el-button>
+              <el-button type="danger" :disabled="!totalAmount">Settlement</el-button>
             </div>
           </div>
         </div>
@@ -246,4 +246,4 @@
     vertical-align: middle;
     color: #666;
   }
-</style>
+</style>-->

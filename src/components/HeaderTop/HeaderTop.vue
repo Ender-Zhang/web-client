@@ -1,7 +1,15 @@
+<!--
+ * @Author: Ender-Zhang YUZ302@pitt.edu
+ * @Date: 2023-04-23 14:46:21
+ * @LastEditors: Ender-Zhang YUZ302@pitt.edu
+ * @LastEditTime: 2023-04-23 17:06:34
+ * @FilePath: \web-client\src\components\HeaderTop\HeaderTop.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
 		<div class="header_nav">
 			<div>
-        <p>嗨~欢迎来到医药商城</p>
+        <p>Hi ~ Welcome to the Medical Mall</p>
         <div class="locationWrapper">
            <svg viewBox="0 0 32 32" class="icon iconLocation">
                 <path fill="#81838E" fill-rule="evenodd"
@@ -24,17 +32,17 @@
       </div>
 			<ul>
 				<li v-if="!userInfo.id">
-					<router-link to="/login">登录</router-link><router-link to="/login">免费注册</router-link>
+					<router-link to="/login">Login</router-link><router-link to="/login">Free Registration</router-link>
 				</li>
 				<li v-else>
-					<a v-if="userInfo.user_nickname">您好,{{ userInfo.user_nickname }}</a>
-          <a v-else>您好,{{ userInfo.user_name | nameFormat }}</a>
-					<a @click="headerLogout">退出登录</a>
+					<a v-if="userInfo.user_nickname">Hello,{{ userInfo.user_nickname }}</a>
+          <a v-else>Hello,{{ userInfo.user_name | nameFormat }}</a>
+					<a @click="headerLogout">Logout</a>
 				</li>
-        <li v-if="this.$route.path.indexOf('/home') === -1"><router-link to="/home">返回首页</router-link></li>
-				<li><a @click.prevent="goMe">个人中心</a></li>
-        <li><a @click.prevent="goShopCar">我的购物车</a></li>
-				<li><a @click.prevent="goAdmin">管理员通道</a></li>
+        <li v-if="this.$route.path.indexOf('/home') === -1"><router-link to="/home">Back to top</router-link></li>
+				<li><a @click.prevent="goMe">Personal Center</a></li>
+        <!-- <li><a @click.prevent="goShopCar">My Cart</a></li> -->
+				<li><a @click.prevent="goAdmin">Administrator Access</a></li>
 				
 			</ul>
 		</div>
@@ -75,26 +83,26 @@
         this.city = position.city;
       },
       showError(){
-        console.log('定位失败');
+        console.log('Positioning failure');
         // 继续定位
         this.getLocation();
       },
       headerLogout(){
-        this.$confirm('您确定退出登录吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('Are you sure you want to log out?', 'Tips', {
+          confirmButtonText: 'Determine',
+          cancelButtonText: 'Cancellation',
           type: 'warning'
         }).then(() => {
           this.$message({
           type: 'success',
-          message: '退出成功!'
+          message: 'Successful exit!'
           });
           let result = this.logOut({});
           window.localStorage.removeItem("userInfo");
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消退出'
+            message: 'Canceled withdrawal'
           });
         });
       },
@@ -104,7 +112,7 @@
         }else{
           MessageBox({
             type: 'info',
-            message: "请先登录!",
+            message: "Please login first!",
 			      showClose: true,
           });
         }
@@ -123,7 +131,7 @@
         }else{
           MessageBox({
             type: 'info',
-            message: "请先登录!",
+            message: "Please login first!",
 			      showClose: true,
           });
         }

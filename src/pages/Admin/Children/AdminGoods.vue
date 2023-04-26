@@ -6,51 +6,51 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="商品名称">
+            <el-form-item label="Product Name">
               <span>{{ props.row.short_name }}</span>
             </el-form-item>
-            <el-form-item label="商品 ID">
+            <el-form-item label="product ID">
               <span>{{ props.row.goods_id }}</span>
             </el-form-item>
-            <el-form-item label="商品分类">
+            <el-form-item label="Product Categories">
               <span>{{ category[props.row.category - 1] }}</span>
             </el-form-item>
-            <el-form-item label="商品价格">
+            <el-form-item label="Product Price">
               <span>{{ (props.row.price /100) | priceFormat}}</span>
             </el-form-item>
-            <el-form-item label="商品库存">
+            <el-form-item label="Merchandise Inventory">
               <span>{{ props.row.counts }}</span>
             </el-form-item>
-            <el-form-item label="商品描述">
+            <el-form-item label="Product Description">
               <span>{{ props.row.goods_name }}</span>
             </el-form-item>
-            <el-form-item label="商品图片">
+            <el-form-item label="Product Images">
               <img :src="props.row.thumb_url" style="width:70px"/>
             </el-form-item>
           </el-form>
         </template>
       </el-table-column>
       <el-table-column
-        label="商品 ID"
+        label="product ID"
         prop="goods_id">
       </el-table-column>
       <el-table-column
-        label="商品名称"
+        label="Product Name"
         prop="short_name">
       </el-table-column>
       <el-table-column
-        label="描述"
+        label="Description"
         prop="goods_name">
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="Operation">
         <template slot-scope="props">
           <el-button
             size="mini"
-            @click="handleEdit(props.$index, props.row)">编辑</el-button>
+            @click="handleEdit(props.$index, props.row)">Editor</el-button>
           <el-button
             size="mini"
             type="danger"
-            @click="handleDelete(props.$index, props.row)">删除</el-button>
+            @click="handleDelete(props.$index, props.row)">Delete</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -71,7 +71,7 @@
   export default {
     data() {
       return {
-        category: ['美容美白','养生保健','医学书籍','医疗器械','视力保护'],
+        category: ['Beauty Whitening','Health Care','Medical Books','Medical Devices','Vision Protection'],
         currentIndex: 1,
         pageSize: 5,
         tableData: [],
@@ -88,22 +88,22 @@
         this.$router.replace('/admin/adminupdate');
       },
       async handleDelete(index, row) {
-        this.$confirm('您确定永久删除该商品吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('Are you sure you want to delete this product permanently?', 'Tips', {
+          confirmButtonText: 'Determine',
+          cancelButtonText: 'Cancellation',
           type: 'warning'
         }).then( async() => {
 		  let result = await deleteRecomGoods(row.goods_id);
           if(result.success_code === 200){
             this.$message({
               type: 'success',
-              message: '已删除'
+              message: 'Deleted'
             });
           }
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消删除'
+            message: 'Deleted'
           });
         });
       },

@@ -1,14 +1,14 @@
 <template>
   <div id="admin">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <router-link class="navbar-brand col-sm-3 col-md-2 mr-0" to="/home">医药商城</router-link>
-      <span class="nav_title">欢迎来到后台管理界面</span>
+      <router-link class="navbar-brand col-sm-3 col-md-2 mr-0" to="/home">Medical Mall</router-link>
+      <span class="nav_title">Welcome to the back office administration interface</span>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <router-link class="nav-link" to="/home">返回商城</router-link>
+          <router-link class="nav-link" to="/home">Back to the mall</router-link>
         </li>
         <li class="nav-item text-nowrap">
-          <a class="nav-link" @click="logout">退出登录</a>
+          <a class="nav-link" @click="logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -26,15 +26,15 @@
               class="el-menu-vertical-demo">
               <el-menu-item index="1"  @click="goTo('/admin/admingoods')">
                 <i class="el-icon-document-copy"></i>
-                <span slot="title">商品信息</span>
+                <span slot="title">Product Information</span>
               </el-menu-item>
               <el-menu-item index="2" @click="goTo('/admin/addgoods')">
                 <i class="el-icon-edit"></i>
-                <span slot="title">商品上架</span>
+                <span slot="title">Product Listing</span>
               </el-menu-item>
               <el-menu-item index="3" @click="goTo('/admin/adminusers')">
                 <i class="el-icon-collection-tag"></i>
-                <span>用户管理</span>
+                <span>User Management</span>
               </el-menu-item>
 
             </el-menu>
@@ -60,7 +60,7 @@
         if(!result){
           MessageBox({
             type: 'info',
-            message: "您还没登录",
+            message: "You are not logged in",
 			      showClose: true,
           });
           this.$router.replace('/adminlogin');
@@ -70,16 +70,16 @@
     },
     methods:{
       logout(){
-        this.$confirm('您确定退出登录吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('Are you sure you want to log out?', 'Tips', {
+          confirmButtonText: 'Determine',
+          cancelButtonText: 'Cancellation',
           type: 'warning'
         }).then(async () => {
           let result = await adminLogout();
           if(result.success_code === 200){
              this.$message({
               type: 'success',
-              message: '退出成功!'
+              message: 'Successful exit!'
             });
             this.$router.replace('/home');
             window.localStorage.removeItem("adminInfo");
@@ -87,7 +87,7 @@
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消退出'
+            message: 'Canceled withdrawal'
           });
         });
       },

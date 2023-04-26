@@ -1,38 +1,38 @@
 <template>
   <div class="user-detail">
-    <div class="user-detail-top">基本信息</div>
+    <div class="user-detail-top">Basic Information</div>
     <div class="user-detail-group">
       <div class="user-icon">
-        <span>头像</span>
+        <span>Avatar</span>
         <img :src="userInfo.user_avatar" alt="">
       </div>
       <div class="user-item">
-        <span>手机</span>
-        <span>{{ userInfo.user_phone || '暂无' }}</span>
+        <span>phone</span>
+        <span>{{ userInfo.user_phone || 'Not available' }}</span>
       </div>
       <div class="user-item">
-        <span>账号</span>
-        <span>{{ userInfo.user_name || '暂无' }}</span>
+        <span>Account Number</span>
+        <span>{{ userInfo.user_name || 'Not available' }}</span>
       </div>
       <div class="user-item">
-        <span>昵称</span>
-        <span>{{ userInfo.user_nickname || '暂无' }}</span>
+        <span>Nickname</span>
+        <span>{{ userInfo.user_nickname || 'Not available' }}</span>
       </div>
       <div class="user-item">
-        <span>性别</span>
-        <span>{{ userInfo.user_sex || '暂无' }}</span>
+        <span>Gender</span>
+        <span>{{ userInfo.user_sex || 'Not available' }}</span>
       </div>
       <div class="user-item">
-        <span>常住地</span>
-        <span>{{ userInfo.user_address || '暂无' }}</span>
+        <span>Place of permanent residence</span>
+        <span>{{ userInfo.user_address || 'Not available' }}</span>
       </div>
       <div class="user-item">
-        <span>生日</span>
-        <span>{{ userInfo.user_birthday || '暂无' }}</span>
+        <span>Birthday</span>
+        <span>{{ userInfo.user_birthday || 'Not available' }}</span>
       </div>
       <div class="user-item">
-        <span>个性签名</span>
-        <span>{{ userInfo.user_sign || '暂无' }}</span>
+        <span>Personalized Signature</span>
+        <span>{{ userInfo.user_sign || 'Not available' }}</span>
       </div>
     </div>
   </div>
